@@ -1,21 +1,8 @@
 import type { Request, Response } from "express";
 import { CatchError, TryError } from "../lib/globalErrorFunctions.js";
 import UserModel from "../model/UserModel.js";
-import bcrypt from "bcrypt"
-import jwt  from "jsonwebtoken"
-import config from "../config/_config.js";
+import { comparePassword, createToken, hashPassword } from "../lib/HelpingFunctions.js";
 
-
-export const hashPassword =(password:string)=>{
-    return  bcrypt.hash(password,10)
-}
-
-export const comparePassword = (password:string, encryptedPassword:string)=>{
-    return bcrypt.compare(password,encryptedPassword)
-}
-export const createToken=(email:string)=>{
-    return jwt.sign({email},config.JWT_SECRET,{expiresIn:'1d'})
-}
 export const signup =async(req:Request ,res:Response)=>{
 try {
      const {email , password} = req.body;
@@ -24,7 +11,7 @@ try {
     }
     const isUser = await UserModel.findOne({email})
     if(isUser){
-        throw TryError("User already Exist")
+        throw TryError("User already Exist",411)
     }
      const encryptedPassword = await hashPassword(password)
     await UserModel.create({email,password:encryptedPassword})

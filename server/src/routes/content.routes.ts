@@ -1,10 +1,11 @@
 import express from "express"
 import { addContent, deleteContent, getContent } from "../controllers/content.controller.js"
+import { AuthMiddleware } from "../middleware/AuthMiddleware.js"
 const ContentRouter = express.Router()
 
 
-ContentRouter.post("/content",addContent) // add content
-ContentRouter.get("/content",getContent) // get content
-ContentRouter.delete("/content",deleteContent) // Delete content
+ContentRouter.post("/",AuthMiddleware,addContent) // add content
+ContentRouter.get("/",getContent) // get content
+ContentRouter.delete("/",deleteContent) // Delete content
 
 export default ContentRouter
