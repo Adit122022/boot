@@ -1,0 +1,1 @@
+this is a base project to start typescript backend project
