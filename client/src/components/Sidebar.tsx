@@ -12,7 +12,6 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     const location = useLocation();
     const { logout, username, email } = useAuth();
     const links = [
-        { name: "My Second Brain", icon: <Brain className="w-6 h-6 text-purple-600" />, path: "/dashboard", type: "header" },
         { name: "All Content", icon: <Hash className="w-5 h-5" />, path: "/dashboard" },
         { name: "Tweets", icon: <Twitter className="w-5 h-5" />, path: "/dashboard?type=twitter" },
         { name: "Videos", icon: <Youtube className="w-5 h-5" />, path: "/dashboard?type=youtube" },
@@ -42,7 +41,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                         <div className="flex items-center justify-between mb-6">
                             <div className="flex items-center gap-2">
                                 <Brain className="w-8 h-8 text-purple-600" />
-                                <span className="text-xl font-bold">Second Brain</span>
+                                <span className="text-xl font-bold">Omoide (思い出)</span>
                             </div>
                             <button onClick={onClose} className="md:hidden text-gray-500 hover:text-gray-700">
                                 <X className="w-6 h-6" />
@@ -96,10 +95,10 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                             variant="secondary"
                             size="sm"
                             onClick={logout}
-                            className="w-full justify-start text-red-600 hover:bg-red-50 hover:text-red-700 hover:border-red-100"
+                            className="w-full py-2 justify-start font-bold text-red-600 hover:bg-red-50 hover:text-red-700 hover:border-red-100"
                             startIcon={<LogOut className="w-4 h-4" />}
                         >
-                            Log Out
+                            <span className="font-bold">Log Out</span>
                         </Button>
                     </div>
                 </div>

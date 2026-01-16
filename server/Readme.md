@@ -1,6 +1,6 @@
-# 🧠 Second Brain Backend
+# 🧠 Omoide (思い出): Means "Recollection" or "Memories."
 
-Welcome to the **Second Brain** backend API! This project serves as the server-side application for the Second Brain app, allowing users to store, manage, and share their useful links and content.
+Welcome to the **Omoide** backend API! This project serves as the server-side application for the Omoide app, allowing users to store, manage, and share their useful links and content.
 
 This guide is designed for beginners to help you understand how to interact with the API endpoints.
 
