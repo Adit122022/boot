@@ -1,4 +1,4 @@
-import { Share2, Trash2, FileText, Youtube, Twitter, Link as LinkIcon, AlertCircle } from "lucide-react"; // Import AlertCircle
+import { Share2, Trash2, FileText, Youtube, Twitter, Link as LinkIcon } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface CardProps {
