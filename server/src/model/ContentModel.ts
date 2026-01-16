@@ -1,5 +1,7 @@
 import mongoose, { model, Schema } from "mongoose";
 
+const contentTypes = ['image', 'video', 'article', 'audio']; // Extend as needed
+
 const ContentSchema = new Schema(
   {
     title: {
@@ -14,6 +16,7 @@ const ContentSchema = new Schema(
       required: [true, "Link is required"],
       trim: true,
     },
+    type: { type: String, enum: contentTypes, required: [true, "Link is required"] },
     // Tags are an array of IDs
     tags: [
       {
