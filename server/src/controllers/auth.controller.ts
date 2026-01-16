@@ -5,8 +5,8 @@ import { comparePassword, createToken, hashPassword } from "../lib/HelpingFuncti
 
 export const signup =async(req:Request ,res:Response)=>{
 try {
-     const {email , password} = req.body;
-    if(!email || !password){
+     const {username ,email , password} = req.body;
+    if(!email || !username ||!password){
        throw TryError("Invalid Credentials", 401)
     }
     const isUser = await UserModel.findOne({email})
@@ -14,7 +14,7 @@ try {
         throw TryError("User already Exist",411)
     }
      const encryptedPassword = await hashPassword(password)
-    await UserModel.create({email,password:encryptedPassword})
+    await UserModel.create({email,username,password:encryptedPassword})
     res.json({message:"User Created 🫡✅"})
 } catch (error) {
         CatchError(error, res, "Signup Error !")
@@ -23,7 +23,7 @@ try {
 export const signin =async(req:Request ,res:Response)=>{
 try {
      const {email , password} = req.body;
-    if(!email || !password){
+    if( !email || !password){
        throw TryError("Invalid Credentials", 401)
     }
     const user = await UserModel.findOne({email}).select("+password")
@@ -31,8 +31,12 @@ try {
     if (!user) throw TryError("User Not Found !" , 401)
     const isPasswordMatch =await comparePassword(password,user.password)
     if(!isPasswordMatch) throw TryError("Invalid Credentials")
-        const token = createToken(user.email)
-    res.json({message:"User Login",token,user})
+    const payload ={
+email:user.email,
+id:user._id.toString()
+}   
+     const token = createToken(payload)
+    res.json({message:"User Login",token})
 } catch (error) {
         CatchError(error, res, "Signin Error !")
     }
