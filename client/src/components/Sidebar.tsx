@@ -14,7 +14,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     const links = [
         { name: "All Content", icon: <Hash className="w-5 h-5" />, path: "/dashboard" },
         { name: "Tweets", icon: <Twitter className="w-5 h-5" />, path: "/dashboard?type=twitter" },
-        { name: "Videos", icon: <Youtube className="w-5 h-5" />, path: "/dashboard?type=youtube" },
+        { name: "Videos", icon: <Youtube className="w-5 h-5" />, path: "/dashboard?type=video" },
         { name: "Documents", icon: <FileText className="w-5 h-5" />, path: "/dashboard?type=article" },
         { name: "Links", icon: <LinkIcon className="w-5 h-5" />, path: "/dashboard?type=link" },
     ];

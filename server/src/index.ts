@@ -17,7 +17,7 @@ app.use("/api/v1/auth", AuthRouter);
 //  content
 app.use("/api/v1/content", ContentRouter);
 //  sharing
-app.use("/api/v1/brain/", ShareRouter);
+app.use("/api/v1/brain", ShareRouter);
 
 app.listen(PORT, () => {
   console.log("Server is Runnning.......");
